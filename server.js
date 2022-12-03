@@ -34,13 +34,13 @@ app.get('/',(req,res)=>{
     res.render('base')
 })
 
-app.post('/data',(req,res)=>
+app.post('/submit',(req,res)=>
 {
     var d1 = req.body.d1;
     var d2 = req.body.d2;
     var d3 = req.body.d3;
     console.log(d1+" "+d2+" "+d3);
-    res.redirect('/');
+    res.render('data',{d1,d2,d3});
     
 })
 
