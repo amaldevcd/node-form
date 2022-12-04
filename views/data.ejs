@@ -1,6 +1,15 @@
 <%- include ('header') -%>
 <h1> YOUR ENTERED DATA</h1>
-<h6>DATA 1 : <%= d1 %></h6>
-<h6>DATA 2 :<%= d2 %></h6>
-<h6>DATA 3 :<%= d3 %></h6>
+<h6>DATA 1 : <%= d1 %> </h6>
+<h6>DATA 2 : <%= d2 %> </h6>
+<h6>DATA 3 : <%= d3 %> </h6>
+
+<caption><%= locals.rows? "Table" : ""%></caption>
+<ul>
+    <% rows.forEach(function(rows){ %>
+<li>
+    <%= rows.s_id %> - <%= rows.s_name %> - <%= rows.s_class %>
+</li>
+    <% }) %>
+</ul>
 <%- include ('footer') -%>

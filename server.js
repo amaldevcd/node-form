@@ -39,8 +39,25 @@ app.post('/submit',(req,res)=>
     var d1 = req.body.d1;
     var d2 = req.body.d2;
     var d3 = req.body.d3;
+    var values = [[d1,d2,d3]]
+    var sql = "insert into samptab (s_id,s_name,s_class) values ('"+d1+"','"+d2+"','"+d3+"')";
+
+    connection.query(sql,[values],function(err,result){
+        if(!!err)
+            console.log(err);
+    })
     console.log(d1+" "+d2+" "+d3);
-    res.render('data',{d1,d2,d3});
+    connection.query("select * from samptab",(error,rows,fields)=>{
+        if(error)
+            console.log("error in query");
+        else
+        {
+            res.render('data',{d1,d2,d3,rows})
+            console.log(rows);
+        }
+        
+    })
+    //res.render('data',{d1,d2,d3});
     
 })
 
